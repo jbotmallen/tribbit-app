@@ -41,7 +41,6 @@ import {
 import { toast } from "sonner";
 import Loading from "@/components/ui/loading";
 import { Check, LogOutIcon, Pencil, Trash2Icon, X } from "lucide-react";
-import Cookies from "js-cookie";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -87,11 +86,12 @@ export default function Profile() {
       }
       dispatch(signOutUserSuccess());
       removeAllAppData();
-      navigate("/login", { replace: true });
+      navigate("/login");
     } catch (error) {
       toast.error("Failed to delete account.");
     } finally {
       setLoading(false);
+      navigate("/login");
     }
   };
 
@@ -160,7 +160,6 @@ export default function Profile() {
 
     // Remove all specified keys
     keysToRemove.forEach((key) => localStorage.removeItem(key));
-    Cookies.remove("token");
   };
 
   return (
