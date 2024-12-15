@@ -19,7 +19,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { habitSchema } from "@/utils/schemas";
-import { Plus } from "lucide-react";
 import { toast } from "sonner";
 import { useFetch } from "@/hooks/use-fetch";
 import { Habit } from "@/utils/types";
