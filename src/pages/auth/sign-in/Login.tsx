@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronLeftIcon } from "lucide-react";
@@ -7,6 +7,10 @@ import LoginForm from "./LoginForm";
 
 const LoginScreen: React.FC = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.cookie = "token=; Max-Age=0; path=/;";
+  }, []);
 
   return (
     <div className="flex justify-center items-center w-full bg-gradient-to-br from-[#2A3D43] via-[#40575C] to-[#61878A] text-white">
