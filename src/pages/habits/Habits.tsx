@@ -87,7 +87,7 @@ const Habits: React.FC = () => {
           setWeeklyCounts(counts);
           setTotalPages(response.data.data.totalPages);
         } else {
-          console.log(result.data.length > 0);
+          (result.data.length > 0);
           setHabits([]);
           setNumHabits(0);
           setHabitStates({});
