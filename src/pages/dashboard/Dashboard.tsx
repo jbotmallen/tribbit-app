@@ -24,7 +24,9 @@ const Dashboard: React.FC = () => {
   } = useHabits();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [page, setPage] = useState(searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1);
+  const [page, setPage] = useState(
+    searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1
+  );
   const limit = 12;
   const [totalPages, setTotalPages] = useState(1);
 
@@ -32,9 +34,13 @@ const Dashboard: React.FC = () => {
     const fetchHabits = async () => {
       setLoading(true);
       try {
-        const response = await useFetch(`/habits?page=${page}&limit=${limit}`, 'get');
+        const response = await useFetch(
+          `/habits?page=${page}&limit=${limit}`,
+          "get"
+        );
         const result = response.data.data;
         if (result.data && result.data.length > 0) {
+          console.log(result.data);
           setHabits(result.data);
           setNumHabits(result.total);
 
@@ -50,6 +56,7 @@ const Dashboard: React.FC = () => {
           setWeeklyCounts(counts);
           setTotalPages(response.data.data.totalPages);
         } else {
+          console.log(result.data.length > 0);
           setHabits([]);
           setNumHabits(0);
           setHabitStates({});
@@ -86,9 +93,7 @@ const Dashboard: React.FC = () => {
         <h1 className="lg:text-4xl sm:text-3xl text-3xl font-bold text-lightYellow tracking-wider py-12">
           Dashboard
         </h1>
-        <Skeleton
-          className="w-full h-[500px] bg-innermostCard rounded-xl text-lightYellow text-center flex flex-col items-center justify-center gap-4"
-        >
+        <Skeleton className="w-full h-[500px] bg-innermostCard rounded-xl text-lightYellow text-center flex flex-col items-center justify-center gap-4">
           <LoaderIcon className="w-20 h-20 animate-spin mx-auto text-lightYellow" />
           <span className="text-2xl font-bold">Loading...</span>
         </Skeleton>
@@ -103,8 +108,14 @@ const Dashboard: React.FC = () => {
           Dashboard
         </h1>
         <div className="m-auto space-y-8">
-          <img src="/error.svg" alt="No habits found" className="w-96 object-cover" />
-          <p className="text-white text-center text-xl md:text-3xl font-bold">No habits found</p>
+          <img
+            src="/error.svg"
+            alt="No habits found"
+            className="w-96 object-cover"
+          />
+          <p className="text-white text-center text-xl md:text-3xl font-bold">
+            No habits found
+          </p>
         </div>
       </div>
     );

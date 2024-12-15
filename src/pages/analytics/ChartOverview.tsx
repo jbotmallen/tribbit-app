@@ -30,7 +30,6 @@ type ChartOverviewProps = {
   loading: boolean;
   data: Data[];
   view: "weekly" | "monthly";
-  weeklyDateRange?: string;
   className?: string;
 };
 
@@ -53,11 +52,19 @@ export function ChartOverview({
     );
   }
 
-  const thisWeek = `${format(startOfWeek(new Date(), { weekStartsOn: 0 }), "LLL dd")} - 
+  const thisWeek = `${format(
+    startOfWeek(new Date(), { weekStartsOn: 0 }),
+    "LLL dd"
+  )} - 
   ${format(endOfWeek(new Date(), { weekStartsOn: 0 }), "LLL dd yyyy")}`;
 
   return (
-    <Card className={cn("w-full min-h-80 max-h-[450px] md:min-h-80 flex-[0.6] bg-outerCard border-2 relative flex flex-col", className)}>
+    <Card
+      className={cn(
+        "w-full min-h-80 max-h-[520px] md:min-h-80 flex-[0.5] bg-outerCard border-2 relative flex flex-col",
+        className
+      )}
+    >
       <CardTitle className="p-5 pb-1 text-xl text-lightYellow">
         {view === "monthly" ? (
           <span>

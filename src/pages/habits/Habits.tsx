@@ -49,7 +49,9 @@ const Habits: React.FC = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [page, setPage] = useState(searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1);
+  const [page, setPage] = useState(
+    searchParams.get("page") ? parseInt(searchParams.get("page") || "1") : 1
+  );
   const limit = 12;
   const [totalPages, setTotalPages] = useState(1);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -64,7 +66,10 @@ const Habits: React.FC = () => {
     const fetchHabits = async () => {
       setLoading(true);
       try {
-        const response = await useFetch(`/habits?page=${page}&limit=${limit}`, 'get');
+        const response = await useFetch(
+          `/habits?page=${page}&limit=${limit}`,
+          "get"
+        );
         const result = response.data.data;
         if (result.data && result.data.length > 0) {
           setHabits(result.data);
@@ -82,6 +87,7 @@ const Habits: React.FC = () => {
           setWeeklyCounts(counts);
           setTotalPages(response.data.data.totalPages);
         } else {
+          console.log(result.data.length > 0);
           setHabits([]);
           setNumHabits(0);
           setHabitStates({});
@@ -253,14 +259,23 @@ const Habits: React.FC = () => {
           <div className="mt-6 grid gap-4">
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 w-full mt-2">
-                {[...Array(4)].map((_, index) => (
-                  <Skeleton key={index} className="h-24 lg:col-span-2 xl:col-span-1 bg-innermostCard" />
+                {[...Array(8)].map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    className="h-24 lg:col-span-2 xl:col-span-1 bg-innermostCard"
+                  />
                 ))}
               </div>
             ) : habits.length === 0 ? (
               <div className="space-y-8 mt-28">
-                <img src="/error.svg" alt="No habits found" className="w-96 object-cover mx-auto" />
-                <p className="text-white text-center text-xl md:text-3xl font-bold">No habits found</p>
+                <img
+                  src="/error.svg"
+                  alt="No habits found"
+                  className="w-96 object-cover mx-auto"
+                />
+                <p className="text-white text-center text-xl md:text-3xl font-bold">
+                  No habits found
+                </p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
@@ -311,9 +326,9 @@ const Habits: React.FC = () => {
             onConfirm={confirmDelete}
             isDestructive={true}
           />
-          <DialogContent className="sm:max-w-[400px] py-12 bg-slate-200">
+          <DialogContent className="sm:max-w-[400px] py-12 bg-outerCard text-white border-none rounded-lg">
             <DialogHeader>
-              <DialogTitle className="text-3xl">
+              <DialogTitle className="text-3xl text-lightYellow">
                 {isEditing ? "Update Habit" : "Create New Habit"}
               </DialogTitle>
             </DialogHeader>
@@ -338,7 +353,7 @@ const Habits: React.FC = () => {
                         <Input
                           placeholder="Habit name"
                           {...field}
-                          className="border-[#6490BC] rounded-md placeholder-gray-200"
+                          className="border-white rounded-md placeholder-gray-200 bg-main/20"
                         />
                       </FormControl>
                       <FormMessage className="text-xs text-red-400" />
@@ -350,7 +365,7 @@ const Habits: React.FC = () => {
                   name="goal"
                   render={({ field }) => (
                     <FormItem className="flex flex-col gap-0">
-                      <FormLabel className="font-bold text-xs text-deepOlive">
+                      <FormLabel className="font-bold text-xs text-lightYellow ">
                         Repetitions per week
                       </FormLabel>
                       <FormControl>
@@ -358,10 +373,11 @@ const Habits: React.FC = () => {
                           {[1, 2, 3, 4, 5, 6, 7].map((value) => (
                             <label
                               key={value}
-                              className={`px-4 py-1 rounded-full cursor-pointer border-2 border-main ${field.value === value
-                                ? "bg-main text-white"
-                                : ""
-                                }`}
+                              className={`px-4 py-1 rounded-full cursor-pointer border-2 border-lightYellow/60 ${
+                                field.value === value
+                                  ? "bg-lightYellow text-main"
+                                  : ""
+                              }`}
                             >
                               <input
                                 type="radio"
@@ -377,7 +393,7 @@ const Habits: React.FC = () => {
                         </div>
                       </FormControl>
 
-                      <FormMessage className="text-xs text-red-400" />
+                      <FormMessage className="text-xs text-red-100" />
                     </FormItem>
                   )}
                 />
@@ -386,7 +402,7 @@ const Habits: React.FC = () => {
                   name="color"
                   render={({ field }) => (
                     <FormItem className="flex flex-col gap-0">
-                      <FormLabel className="font-bold text-xs text-deepOlive">
+                      <FormLabel className="font-bold text-xs text-lightYellow">
                         Set card color
                       </FormLabel>
                       <FormControl>
@@ -430,7 +446,7 @@ const Habits: React.FC = () => {
                 />
 
                 <Button
-                  className="bg-sageGreen hover:bg-mutedGreen w-full text-white text-sm"
+                  className="bg-[#9de36e] hover:bg-mutedGreen w-full text-main text-sm"
                   type="submit"
                   disabled={loading}
                 >

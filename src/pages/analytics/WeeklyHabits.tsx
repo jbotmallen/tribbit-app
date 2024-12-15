@@ -19,7 +19,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { GiDeadWood } from "react-icons/gi";
 import { ChartOverview } from "./ChartOverview";
-import { formatDate } from "@/utils/dateFormatter";
 import Overview from "./Overview";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "react-router-dom";
@@ -126,7 +125,7 @@ const WeeklyHabits = () => {
   };
 
   return (
-    <div className="space-y-5 w-full flex flex-col gap-1 md:max-w-2xl lg:max-w-none md:mx-auto lg:m-0">
+    <div className="space-y-5 w-full flex flex-col gap-1 md:max-w-2xl lg:max-w-none min-h-dvh">
       <Overview selected="weekly" skippedDays={skippedDays} />
       <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
         <div className="w-full">
@@ -134,9 +133,6 @@ const WeeklyHabits = () => {
             data={userHabitCount}
             view="weekly"
             loading={loading.userHabitCount}
-            weeklyDateRange={`${formatDate(startRange)} - ${formatDate(
-              endRange
-            )}`}
           />
         </div>
         <Card className="w-full md:min-w-96 md:max-w-2xl lg:max-w-xl mx-auto lg:mr-0 border-none rounded-xl text-yellow-300 min-h-96 sm:min-h-96 lg:min-h-96 relative flex flex-col items-center gap-5 shadow-none">
