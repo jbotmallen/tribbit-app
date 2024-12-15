@@ -87,12 +87,11 @@ export default function Profile() {
       }
       dispatch(signOutUserSuccess());
       removeAllAppData();
-      navigate("/login");
+      navigate("/login", { replace: true });
     } catch (error) {
       toast.error("Failed to delete account.");
     } finally {
       setLoading(false);
-      navigate("/login");
     }
   };
 
@@ -106,7 +105,7 @@ export default function Profile() {
       if (result.status === 200) {
         dispatch(signOutUserSuccess());
         removeAllAppData();
-        navigate("/login");
+        navigate("/login", { replace: true });
       } else {
         const data = await result.json();
         dispatch(signOutUserFailure(data.message || "Logout failed"));
