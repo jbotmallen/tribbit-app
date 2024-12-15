@@ -97,25 +97,25 @@ export default function Profile() {
 
   const onSignOut = async () => {
     dispatch(signOutUserStart());
-
     try {
       const response = await useFetch("/profile/logout", "post");
-      const result = response.data;
-
-      if (result.status === 200) {
+  
+      if (response.status === 200) {
         dispatch(signOutUserSuccess());
         removeAllAppData();
+        toast.success("Logged out successfully.");
         navigate("/login", { replace: true });
       } else {
-        const data = await result.json();
-        dispatch(signOutUserFailure(data.message || "Logout failed"));
+        const errorMessage = response.data?.message || "Logout failed";
+        dispatch(signOutUserFailure(errorMessage));
+        toast.error(errorMessage);
       }
     } catch (error: any) {
-      dispatch(
-        signOutUserFailure(error.message || "An unexpected error occurred")
-      );
+      console.error("Logout Error:", error);
+      dispatch(signOutUserFailure());
+      toast.error("Failed to logout. Try again.");
     }
-  };
+  };  
 
   const handleUpdateProfile = async (event: React.FormEvent) => {
     event.preventDefault();
