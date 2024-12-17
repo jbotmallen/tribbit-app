@@ -50,7 +50,7 @@ const StreakCard: React.FC<StreakCardProps> = ({ id }) => {
 
   if (error && !loading) {
     return (
-      <div className="text-white">
+      <div className="text-white mx-auto">
         <img src="/error.svg" alt="error" className="w-60 h-60" />
         <span className="text-xl text-center">{error}</span>
       </div>
