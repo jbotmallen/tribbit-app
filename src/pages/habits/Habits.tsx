@@ -208,6 +208,8 @@ const Habits: React.FC = () => {
     }
   };
 
+  const paginatedHabits = habits.slice((page - 1) * limit, page * limit);
+
   return (
     <div className="w-full min-h-full bg-gradient-to-br from-[#2A3D43] to-[#40575C] relative overflow-hidden">
       {habits.length > 0 && !loading && (
@@ -261,7 +263,7 @@ const Habits: React.FC = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
-                {habits.map((habit) => (
+                {paginatedHabits.map((habit) => (
                   <HabitCard
                     key={habit.habit._id}
                     habit={habit.habit}
@@ -277,7 +279,7 @@ const Habits: React.FC = () => {
               </div>
             )}
             {totalPages > 1 && (
-              <Pagination page={page} totalPages={totalPages} setPage={setPage} className="hidden md:flex fixed bottom-5 left-1/2 transform -translate-x-1/2" />
+              <Pagination page={page} totalPages={totalPages} setPage={setPage} className="hidden md:flex fixed bottom-5 left-1/2 transform -translate-x-1/2 mx-auto" />
             )}
           </div>
           <ConfirmationDialog
@@ -356,7 +358,7 @@ const Habits: React.FC = () => {
                         </div>
                       </FormControl>
 
-                      <FormMessage className="text-xs text-red-100" />
+                      <FormMessage className="text-xs text-red-400" />
                     </FormItem>
                   )}
                 />
