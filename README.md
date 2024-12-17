@@ -3,9 +3,12 @@
 **Made by:** Alex Abainza, Mark Allen Jugalbot, Stella Salde - BS Computer Science 3
 
 ## Visit our app here:
-🐸 tribbit-app.vercel.app
-🐸 tribbit-app.vercel.app
-🐸 tribbit-app.vercel.app
+🐸 [](tribbit-app.vercel.app)
+<br/>
+🐸 [](tribbit-app.vercel.app)
+<br/>
+🐸 [](tribbit-app.vercel.app)
+<br/>
 
 ## About the App
 
