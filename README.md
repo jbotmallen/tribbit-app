@@ -19,6 +19,7 @@ Tribbit is an application designed to help users build and maintain positive hab
 ## Links
 
 **Frontend code (deployed):** [Deployed github link to frontend](https://github.com/jbotmallen/tribbit-app)
+<br/>
 **Frontend code (original):** [Original github link to frontend](https://github.com/alexabainza/habit-tracker-frontend)
 <br/>
 **Backend code:** [Github link to backend](https://github.com/jbotmallen/tribbit-api)
