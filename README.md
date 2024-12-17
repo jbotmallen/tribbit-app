@@ -35,7 +35,7 @@ git clone https://github.com/alexabainza/habit-tracker-frontend.git
 2. **Navigate to the root folder**
 
 ```
-cd habit-tracker-frontend
+cd tribbit-app
 ```
 
 3. **Install dependencies**
