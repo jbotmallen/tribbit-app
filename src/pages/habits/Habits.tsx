@@ -44,7 +44,6 @@ const Habits: React.FC = () => {
     setHabits,
     setHabitStates,
     setWeeklyCounts,
-    setNumHabits,
     setError,
   } = useHabits();
 
@@ -74,7 +73,6 @@ const Habits: React.FC = () => {
         const result = response.data.data;
         if (result.data && result.data.length > 0) {
           setHabits(result.data);
-          setNumHabits(result.total);
 
           const states: { [key: string]: boolean } = {};
           const counts: { [key: string]: number } = {};
@@ -90,13 +88,11 @@ const Habits: React.FC = () => {
         } else {
           (result.data.length > 0);
           setHabits([]);
-          setNumHabits(0);
           setHabitStates({});
           setWeeklyCounts({});
         }
       } catch (error: any) {
         setHabits([]);
-        setNumHabits(0);
         setHabitStates({});
         setWeeklyCounts({});
         setError({
@@ -214,7 +210,9 @@ const Habits: React.FC = () => {
 
   return (
     <div className="w-full min-h-full bg-gradient-to-br from-[#2A3D43] to-[#40575C] relative overflow-hidden">
-      <img src="/error.svg" alt="background" draggable={false} className="absolute object-cover z-0 opacity-5 -rotate-[35deg] -right-96 -bottom-96" />
+      {habits.length > 0 && !loading && (
+        <img src="/error.svg" alt="background" draggable={false} className="absolute object-cover z-0 opacity-5 -rotate-[35deg] -right-96 -bottom-96" />
+      )}
       <div className="w-full py-12 lg:px-16 sm:px-5 px-5 space-y-4">
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <div className="flex gap-4 justify-between">
