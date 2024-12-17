@@ -15,7 +15,7 @@ const LandingPage: React.FC = () => {
     <div className="w-full flex flex-col pt-24 bg-outerCard gap-10">
       <DumbbellIcon className="w-[1000px] h-[1000px] text-lightYellow fixed -z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5" />
       <section className="z-50 flex flex-col lg:flex-row items-center justify-center lg:items-start gap-5 lg:px-10 px-5">
-        <div className="rounded-full w-96 h-72 md:h-80 bg-[#0b393b] rounded-b-none shadow-md shadow-green-400 relative">
+        <div className="rounded-full w-80 md:w-96 h-72 md:h-80 bg-[#0b393b] rounded-b-none shadow-md shadow-green-400 relative">
           <img
             loading="eager" src="/logo.svg" alt="landing-bg" className="w-full h-52 xl:h-96 object-contain animate-bounce-less absolute bottom-0 xl:-mb-16" />
         </div>
