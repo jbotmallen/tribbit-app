@@ -38,7 +38,7 @@ Tribbit is an application designed to help users build and maintain positive hab
 1. **Clone the repository**
 
 ```
-git clone https://github.com/alexabainza/habit-tracker-frontend.git
+git clone https://github.com/jbotmallen/tribbit-app.git
 ```
 
 2. **Navigate to the root folder**
@@ -52,8 +52,12 @@ cd tribbit-app
 ```
 npm install
 ```
-
-4. **Run the app**
+4. **Create a .env file in the root directory and add the necessary environment variables. Refer to .env.example if available.**
+```
+cp .env.example .env
+```
+   
+6. **Run the app**
 
 ```
 npm run dev
