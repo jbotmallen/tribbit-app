@@ -57,7 +57,7 @@ npm install
 cp .env.example .env
 ```
    
-6. **Run the app**
+5. **Run the app**
 
 ```
 npm run dev
