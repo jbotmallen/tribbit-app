@@ -12,7 +12,6 @@ import {
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { endOfWeek, format, startOfWeek } from "date-fns";
 
 const chartConfig = {
   count: {
@@ -30,6 +29,7 @@ type ChartOverviewProps = {
   loading: boolean;
   data: Data[];
   view: "weekly" | "monthly";
+  weeklyDateRange?: string;
   className?: string;
 };
 
@@ -37,13 +37,14 @@ export function ChartOverview({
   loading,
   data,
   view,
+  weeklyDateRange,
   className,
 }: ChartOverviewProps) {
   // Derive date range for monthly view
   const dateRange = data.length
     ? `${new Date(data[0]?.date).toDateString()} to ${new Date(
-      data[data.length - 1]?.date
-    ).toDateString()}`
+        data[data.length - 1]?.date
+      ).toDateString()}`
     : null;
 
   if (loading) {
@@ -51,12 +52,6 @@ export function ChartOverview({
       <Skeleton className="w-full min-h-[450px] flex-1 bg-innermostCard rounded-xl" />
     );
   }
-
-  const thisWeek = `${format(
-    startOfWeek(new Date(), { weekStartsOn: 0 }),
-    "LLL dd"
-  )} - 
-  ${format(endOfWeek(new Date(), { weekStartsOn: 0 }), "LLL dd yyyy")}`;
 
   return (
     <Card
@@ -74,7 +69,7 @@ export function ChartOverview({
         ) : (
           <span>
             Overview from
-            <strong className="ml-2">{thisWeek}</strong>
+            <strong className="ml-2">{weeklyDateRange}</strong>
           </span>
         )}
       </CardTitle>

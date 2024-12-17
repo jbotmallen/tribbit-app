@@ -125,7 +125,7 @@ const WeeklyHabits = () => {
   };
 
   return (
-    <div className="space-y-5 w-full flex flex-col gap-1 md:max-w-2xl lg:max-w-none min-h-dvh">
+    <div className="space-y-5 w-full flex flex-col gap-1 md:max-w-2xl lg:max-w-none min-h-dvh mx-auto">
       <Overview selected="weekly" skippedDays={skippedDays} />
       <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
         <div className="w-full">
@@ -133,6 +133,7 @@ const WeeklyHabits = () => {
             data={userHabitCount}
             view="weekly"
             loading={loading.userHabitCount}
+            weeklyDateRange={`${format(startRange, "MMM dd")} to ${format(endRange, "MMM dd")}`}
           />
         </div>
         <Card className="w-full md:min-w-96 md:max-w-2xl lg:max-w-xl mx-auto lg:mr-0 border-none rounded-xl text-yellow-300 min-h-96 sm:min-h-96 lg:min-h-96 relative flex flex-col items-center gap-5 shadow-none">

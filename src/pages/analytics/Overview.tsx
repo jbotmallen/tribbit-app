@@ -94,7 +94,7 @@ const Overview: React.FC<OverviewProps> = ({ selected, skippedDays }) => {
   const thisWeek = `${format(start, 'MMM dd')} to ${format(end, 'MMM dd')}`;
 
   return (
-    <Card className="bg-outerCard lg:py-4 sm:py-2 py-2 border-2 lg:px-8 md:px-4 sm:px-2 px-2 space-y-2 w-full md:mx-auto flex flex-col justify-center">
+    <Card className="bg-outerCard lg:py-4 sm:py-2 py-2 border-2 lg:px-8 md:px-4 sm:px-2 px-2 space-y-2 w-full mx-auto flex flex-col justify-center">
       <CardHeader className="pb-0 pl-4">
         <CardTitle className="text-lightYellow text-xl">
           Streak Overview for <span className="uppercase font-bold underline">{thisWeek}</span>
