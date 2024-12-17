@@ -54,7 +54,7 @@ const Habits: React.FC = () => {
   );
   const limit = 12;
   const [totalPages, setTotalPages] = useState(1);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(searchParams.get("create") === "true");
   const [isEditing, setIsEditing] = useState(false);
   const [habitToUpdate, setHabitToUpdate] = useState<Habit["habit"] | null>(
     null
@@ -273,8 +273,8 @@ const Habits: React.FC = () => {
                   alt="No habits found"
                   className="w-96 object-cover mx-auto"
                 />
-                <p className="text-white text-center text-xl md:text-3xl font-bold">
-                  No habits found
+                <p className="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold">
+                  It's lonely here...
                 </p>
               </div>
             ) : (
@@ -373,11 +373,10 @@ const Habits: React.FC = () => {
                           {[1, 2, 3, 4, 5, 6, 7].map((value) => (
                             <label
                               key={value}
-                              className={`px-4 py-1 rounded-full cursor-pointer border-2 border-lightYellow/60 ${
-                                field.value === value
+                              className={`px-4 py-1 rounded-full cursor-pointer border-2 border-lightYellow/60 ${field.value === value
                                   ? "bg-lightYellow text-main"
                                   : ""
-                              }`}
+                                }`}
                             >
                               <input
                                 type="radio"
