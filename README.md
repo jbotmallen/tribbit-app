@@ -2,6 +2,11 @@
 
 **Made by:** Alex Abainza, Mark Allen Jugalbot, Stella Salde - BS Computer Science 3
 
+## Visit our app here:
+🐸 tribbit-app.vercel.app
+🐸 tribbit-app.vercel.app
+🐸 tribbit-app.vercel.app
+
 ## About the App
 
 Tribbit is an application designed to help users build and maintain positive habits. With features like habit creation, streak tracking, and detailed progress analytics, users can easily set daily or weekly targets, log their completions, and visualize their progress through interactive charts and graphs.
